@@ -7,9 +7,11 @@
     Shell.FlyoutBehavior="Disabled"
     Title="BMI Calculator">
 
-    <ShellContent
-        Title="BMI Calculator"
-        ContentTemplate="{DataTemplate pages:BMICalculatorPage}"
-        Route="bmi" />
+    <TabBar>
+        <ShellContent
+            Title="BMI Calculator"
+            ContentTemplate="{DataTemplate pages:BMIInputPage}"
+            Route="bmi_input" />
+    </TabBar>
 
 </Shell>

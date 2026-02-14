@@ -44,6 +44,9 @@ namespace Vijai_Rohit_BMICalculator
 
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
+            builder.Services.AddTransient<BMIInputPage>();
+            builder.Services.AddTransient<BMIResultPage>();
+            builder.Services.AddTransient<HealthRecommendationsPage>();
 
             return builder.Build();
         }

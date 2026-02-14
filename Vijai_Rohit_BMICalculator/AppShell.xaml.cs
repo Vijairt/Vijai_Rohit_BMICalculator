@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Font = Microsoft.Maui.Font;
+using Vijai_Rohit_BMICalculator.Pages;
 
 namespace Vijai_Rohit_BMICalculator
 {
@@ -9,7 +10,15 @@ namespace Vijai_Rohit_BMICalculator
         public AppShell()
         {
             InitializeComponent();
+            RegisterRoutes();
         }
+
+        private void RegisterRoutes()
+        {
+            Routing.RegisterRoute("bmi_result", typeof(BMIResultPage));
+            Routing.RegisterRoute("bmi_recommendations", typeof(HealthRecommendationsPage));
+        }
+
         public static async Task DisplaySnackbarAsync(string message)
         {
             CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();

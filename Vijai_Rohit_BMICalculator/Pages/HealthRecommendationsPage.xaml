@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:Vijai_Rohit_BMICalculator.PageModels"
+             x:Class="Vijai_Rohit_BMICalculator.Pages.HealthRecommendationsPage"
+             x:DataType="pageModels:HealthRecommendationsPageModel"
+             Title="Health Recommendations"
+             BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="StartAndExpand">
+            <Label 
+                Text="Personalized Health Recommendations" 
+                FontSize="22" 
+                FontAttributes="Bold" 
+                TextColor="#333333"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"/>
+
+            <Frame 
+                CornerRadius="15" 
+                Padding="20" 
+                BorderColor="{Binding StatusColor}"
+                HasShadow="True"
+                BackgroundColor="White">
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                    <Label 
+                        Text="{Binding Status}" 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="{Binding StatusColor}"/>
+                    <Label 
+                        Text="{Binding BMI, StringFormat='BMI: {0:F2}'}" 
+                        FontSize="16"
+                        TextColor="#666666"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <Label 
+                Text="What You Should Do" 
+                FontSize="18" 
+                FontAttributes="Bold" 
+                TextColor="#333333"
+                Margin="0,10,0,0"/>
+            
+            <Frame CornerRadius="15" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <Label 
+                    Text="{Binding Recommendation}" 
+                    FontSize="14"
+                    TextColor="#333333"
+                    LineBreakMode="WordWrap"/>
+            </Frame>
+
+            <Label 
+                Text="Gender-Specific Tips" 
+                FontSize="18" 
+                FontAttributes="Bold" 
+                TextColor="#333333"
+                Margin="0,10,0,0"/>
+
+            <Frame CornerRadius="15" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <VerticalStackLayout Spacing="10">
+                    <Label 
+                        Text="{Binding GenderSpecificTips}" 
+                        FontSize="14"
+                        TextColor="#333333"
+                        LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label 
+                Text="Understanding Your BMI" 
+                FontSize="18" 
+                FontAttributes="Bold" 
+                TextColor="#333333"
+                Margin="0,10,0,0"/>
+
+            <Frame CornerRadius="15" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <VerticalStackLayout Spacing="10">
+                    <Label 
+                        Text="{Binding GenderBMITips}" 
+                        FontSize="14"
+                        TextColor="#333333"
+                        LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label 
+                Text="General Health Tips" 
+                FontSize="18" 
+                FontAttributes="Bold" 
+                TextColor="#333333"
+                Margin="0,10,0,0"/>
+            
+            <Frame CornerRadius="15" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="• Get 7-9 hours of quality sleep daily" FontSize="14" TextColor="#333333"/>
+                    <Label Text="• Drink at least 8-10 glasses of water daily" FontSize="14" TextColor="#333333"/>
+                    <Label Text="• Manage stress through meditation or yoga" FontSize="14" TextColor="#333333"/>
+                    <Label Text="• Have regular health check-ups" FontSize="14" TextColor="#333333"/>
+                    <Label Text="• Avoid smoking and excessive alcohol" FontSize="14" TextColor="#333333"/>
+                    <Label Text="• Stay consistent with your health goals" FontSize="14" TextColor="#333333"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
+                <Button
+                    Text="Back to Results"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    Padding="20,15"
+                    CornerRadius="10"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    Command="{Binding BackToResultCommand}"/>
+                
+                <Button
+                    Text="Start Over"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    Padding="20,15"
+                    CornerRadius="10"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    Command="{Binding BackToInputCommand}"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

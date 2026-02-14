@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:Vijai_Rohit_BMICalculator.PageModels"
+             x:Class="Vijai_Rohit_BMICalculator.Pages.BMIResultPage"
+             x:DataType="pageModels:BMIResultPageModel"
+             Title="BMI Result"
+             BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="StartAndExpand">
+            <Label 
+                Text="Your BMI Results" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                TextColor="#333333"
+                HorizontalOptions="Center"/>
+
+            <Frame 
+                CornerRadius="20" 
+                Padding="30" 
+                BorderColor="{Binding StatusColor}"
+                HasShadow="True"
+                BackgroundColor="White">
+                <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
+                    <Label 
+                        Text="{Binding BMI, StringFormat='{0:F2}'}" 
+                        FontSize="48" 
+                        FontAttributes="Bold"
+                        TextColor="{Binding StatusColor}"
+                        HorizontalOptions="Center"/>
+                    
+                    <Label 
+                        Text="{Binding Status}" 
+                        FontSize="20" 
+                        FontAttributes="Bold"
+                        TextColor="{Binding StatusColor}"
+                        HorizontalOptions="Center"/>
+                    
+                    <Label 
+                        Text="{Binding UserInfo}" 
+                        FontSize="14" 
+                        TextColor="#666666"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame CornerRadius="15" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="BMI Categories" FontSize="16" FontAttributes="Bold" TextColor="#333333"/>
+                    <Label Text="Underweight: &lt; 18.5 (Male) / &lt; 18 (Female)" FontSize="12" TextColor="#666666"/>
+                    <Label Text="Normal: 18.5-25 (Male) / 18-24 (Female)" FontSize="12" TextColor="#666666"/>
+                    <Label Text="Overweight: 25-30 (Male) / 24-29 (Female)" FontSize="12" TextColor="#666666"/>
+                    <Label Text="Obese: ≥ 30 (Male) / ≥ 29 (Female)" FontSize="12" TextColor="#666666"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
+                <Button
+                    Text="View Health Recommendations"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    Padding="20,15"
+                    CornerRadius="10"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    Command="{Binding ViewRecommendationsCommand}"/>
+                
+                <Button
+                    Text="Back to Input"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    Padding="20,15"
+                    CornerRadius="10"
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    Command="{Binding BackToInputCommand}"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

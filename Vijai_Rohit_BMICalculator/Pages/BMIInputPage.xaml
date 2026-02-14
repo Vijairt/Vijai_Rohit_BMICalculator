@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pageModels="clr-namespace:Vijai_Rohit_BMICalculator.PageModels"
+             xmlns:utilities="clr-namespace:Vijai_Rohit_BMICalculator.Utilities"
+             x:Class="Vijai_Rohit_BMICalculator.Pages.BMIInputPage"
+             x:DataType="pageModels:BMIInputPageModel"
+             Title="BMI Calculator"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <utilities:BoolToColorConverter x:Key="BoolToColorConverter"/>
+            <utilities:ColorToBgConverter x:Key="ColorToBgConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Start">
+            <Label Text="Select Gender" FontSize="18" FontAttributes="Bold" TextColor="#333333"/>
+            
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Border
+                    Stroke="{Binding IsMaleSelected, Converter={StaticResource BoolToColorConverter}}"
+                    StrokeThickness="3"
+                    Padding="30,25"
+                    StrokeShape="RoundRectangle 15,15,15,15"
+                    WidthRequest="140"
+                    HeightRequest="160"
+                    BackgroundColor="White">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding SelectGenderCommand}" 
+                            CommandParameter="male"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label 
+                            Text="👨" 
+                            FontSize="50" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center"/>
+                        <Label Text="Male" HorizontalOptions="Center" FontSize="14" FontAttributes="Bold" TextColor="#333333"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border
+                    Stroke="{Binding IsFemaleSelected, Converter={StaticResource BoolToColorConverter}}"
+                    StrokeThickness="3"
+                    Padding="30,25"
+                    StrokeShape="RoundRectangle 15,15,15,15"
+                    WidthRequest="140"
+                    HeightRequest="160"
+                    BackgroundColor="White">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding SelectGenderCommand}" 
+                            CommandParameter="female"/>
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label 
+                            Text="👩" 
+                            FontSize="50" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center"/>
+                        <Label Text="Female" HorizontalOptions="Center" FontSize="14" FontAttributes="Bold" TextColor="#333333"/>
+                    </VerticalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+
+            <Label Text="Height (inches)" FontSize="16" FontAttributes="Bold" TextColor="#333333" Margin="0,20,0,0"/>
+            <Frame CornerRadius="12" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <VerticalStackLayout Spacing="15">
+                    <Slider 
+                        Value="{Binding Height}"
+                        Minimum="0"
+                        Maximum="100"
+                        HorizontalOptions="FillAndExpand"
+                        ThumbColor="#E91E63"
+                        MinimumTrackColor="#E91E63"
+                        MaximumTrackColor="#CCCCCC"/>
+                    <Label 
+                        Text="{Binding Height, StringFormat='{0:F0}'}" 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="Weight (lbs)" FontSize="16" FontAttributes="Bold" TextColor="#333333" Margin="0,20,0,0"/>
+            <Frame CornerRadius="12" Padding="20" BorderColor="#E0E0E0" HasShadow="False" BackgroundColor="White">
+                <VerticalStackLayout Spacing="15">
+                    <Slider 
+                        Value="{Binding Weight}"
+                        Minimum="0"
+                        Maximum="300"
+                        HorizontalOptions="FillAndExpand"
+                        ThumbColor="#E91E63"
+                        MinimumTrackColor="#E91E63"
+                        MaximumTrackColor="#CCCCCC"/>
+                    <Label 
+                        Text="{Binding Weight, StringFormat='{0:F0}'}" 
+                        FontSize="18" 
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button
+                Text="Calculate your BMI"
+                FontSize="16"
+                FontAttributes="Bold"
+                Padding="20,15"
+                CornerRadius="10"
+                BackgroundColor="#1A1A4D"
+                TextColor="White"
+                Margin="0,30,0,20"
+                Command="{Binding CalculateBMICommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
